@@ -1,0 +1,32 @@
+{
+  "name": "mongoose-history",
+  "version": "0.0.1",
+  "description": "Keeps a history of all changes of a document.",
+  "main": "lib/mongoose-history.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/rossan/mongoose-history"
+  },
+  "keywords": [
+    "mongoose",
+    "history",
+    "safe",
+    "cqrs",
+    "backup"
+  ],
+  "author": "Nassor Paulino da Silva",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/rossan/mongoose-history/issues"
+  },
+  "dependencies": {
+    "mongoose": "~3.6.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  }
+}
