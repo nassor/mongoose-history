@@ -1,6 +1,6 @@
 {
   "name": "mongoose-history",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Keeps a history of all changes of a document.",
   "main": "lib/mongoose-history.js",
   "scripts": {
