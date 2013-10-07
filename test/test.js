@@ -6,16 +6,28 @@ var should   = require('should')
 require('./config/mongoose');
 
 describe('History plugin', function() {
-  var idx = {'u_at': 1, 'doc.u_for': 1};
+  
   var PostSchema = new Schema({
       u_for: String
     , title: String
     , message: String
   });
-  PostSchema.plugin(history, {indexes: [idx]});
+  PostSchema.plugin(history);
+  
+  var PostSchemaWithIdx = new Schema({
+    u_for: String
+  , title: String
+  , message: String
+  });
+  var idx = {'u_at': 1, 'doc.u_for': 1};
+  PostSchemaWithIdx.plugin(history, {indexes: [idx]});
   
   var Post =  mongoose.model('Post', PostSchema)
     , HistoryPost = Post.historyModel()
+    
+    , PostIdx = mongoose.model('PostIdx', PostSchemaWithIdx)
+    , HistoryPostIdx = PostIdx.historyModel()
+    
     , createAndUpdatePostWithHistory = function(post, callback) {
     post.save(function(err) {
       if(err) return callback(err);
@@ -92,7 +104,7 @@ describe('History plugin', function() {
   });
   
   it('could have own indexes', function(done) {
-    HistoryPost.collection.indexInformation({full:true}, function(err, idxInformation) {
+    HistoryPostIdx.collection.indexInformation({full:true}, function(err, idxInformation) {
       'u_at_1_doc.u_for_1'.should.eql(idxInformation[1].name);
       done();
     });
