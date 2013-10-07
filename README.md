@@ -68,13 +68,14 @@ Get History Model of Model;
 Clear all History collection;
 
 
-# TODO
+## TODO
 
 * Capped history collections;
 * Rollback methods;
 * Recreate all the collection from the historic;
+* Another connection for history collections;
 
-# LICENSE
+## LICENSE
 
 Copyright (c) 2013, Nassor Paulino da Silva <nassor@gmail.com>
 All rights reserved.
