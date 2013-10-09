@@ -39,9 +39,9 @@ The history documents have the format:
 ```javascript
 {
     _id:  ObjectId,
-    u_at: Date // when history was made
-    action: "save" | "remove" // what happens with document
-    doc: {  // changed document data
+    t: Date // when history was made
+    o: "i" (insert) | "u" (update) | "r" (remove) // what happens with document
+    d: {  // changed document data
         _id:         ObjectId
       , title:       String
       , message:     String
@@ -54,7 +54,7 @@ The history documents have the format:
 To improve queries perfomance in history collection you can define indexes, for example:
 
 ```javascript
-var options = {indexes: {'doc._id': 1}}
+var options = {indexes: {'t': -1, 'd._id': 1}}
 Post.plugin(mongooseHistory, options)
 ```
 
