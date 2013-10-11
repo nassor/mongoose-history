@@ -8,6 +8,6 @@ var PostSchema = new Schema({
   , message: String
 });
 
-PostSchema.plugin(history, {indexes: [{'t': 1, 'd._id': 1}]});
+PostSchema.plugin(history, {indexes: [{'t': 1, 'd._id': 1}], customCollectionName: 'posts_idx_history'});
 
 module.exports = mongoose.model('PostWithIdx', PostSchema);

@@ -8,21 +8,9 @@ require('./config/mongoose');
 
 describe('History Model', function() {
   describe('historyCoolectionName', function() {  
-    it('should prefix collection name', function(done) {
-      var collectionName = hm.historyCollectionName('original_collection_name', 'keep_', '');
-      collectionName.should.eql("keep_original_collection_name");
-      done();
-    });
-    
-    it('should suffix collection name', function(done) {
-      var collectionName = hm.historyCollectionName('original_collection_name', '', '_hst');
-      collectionName.should.eql("original_collection_name_hst");
-      done();
-    });
-    
-    it('should prefix and suffix collection name', function(done) {
-      var collectionName = hm.historyCollectionName('original_collection_name', 'keep_', '_hst');
-      collectionName.should.eql("keep_original_collection_name_hst");
+    it('should set a collection name', function(done) {
+      var collectionName = hm.historyCollectionName('original_collection_name', 'defined_by_user_history_collection_name');
+      collectionName.should.eql("defined_by_user_history_collection_name");
       done();
     });
     

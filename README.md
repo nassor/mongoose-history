@@ -26,13 +26,17 @@ var Post = new Schema({
 })
 
 // Default options
-var options = {indexes: null, prefix: null, suffix: '_history'}
+var options = {indexes: null, customCollectionName: null}
 
 Post.plugin(mongooseHistory, options)
 ```
 
-The plugin will create a new collection with format: __*prefix*|originalCollectionName|*suffix*__,
-in example: __posts_history__
+The plugin will create a new collection with format: originalCollectionName +  **_history**, in example: __posts_history__. You can also change the name of the collection by setting the configuration customCollectionName:
+
+```javascript
+var options = {customCollectionName: "post_hst"}
+Post.plugin(mongooseHistory, options)
+```
 
 The history documents have the format:
 
@@ -70,7 +74,6 @@ Clear all History collection;
 
 ## TODO
 
-* Capped history collections;
 * Rollback methods;
 * Recreate all the collection from the historic;
 * Another connection for history collections;
