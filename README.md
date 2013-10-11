@@ -62,6 +62,18 @@ var options = {indexes: {'t': -1, 'd._id': 1}}
 Post.plugin(mongooseHistory, options)
 ```
 
+### Send history to another database
+You can keep your history collection far away from your primary database or replica set. This can be useful for improve the architecture of your system.
+
+Just create another connection to the new database and link the reference in __historyConnection__:
+
+```javascript
+var secondConn = mongoose.createConnection('mongodb://localhost/another_conn');
+var options = {historyConnection: secondConn}
+Post.plugin(mongooseHistory, options)
+```
+
+
 ### Statics
 All modules with history plugin have following methods:
 
@@ -76,7 +88,6 @@ Clear all History collection;
 
 * Rollback methods;
 * Recreate all the collection from the historic;
-* Another connection for history collections;
 
 ## LICENSE
 

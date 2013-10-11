@@ -1,8 +1,10 @@
 "use strict";
 
-var should   = require('should')
-  , hm   = require('../lib/history-model')
-  , Post   = require('./model/post-with-index');;
+var should          = require('should')
+  , hm              = require('../lib/history-model')
+  , Post            = require('./model/post-with-index')
+  , PostAnotherConn = require('./model/post-another-conn')
+  , secondConn      = require('mongoose').createConnection('mongodb://localhost/mongoose-history-test-second');
 
 require('./config/mongoose');
 
@@ -51,5 +53,27 @@ describe('History Model', function() {
       done();
     });
   });
+  
+  it('could have another connection', function(done) {
+    var post = new PostAnotherConn({
+      updatedFor: 'mail@test.com',
+      title:   'Title test',
+      message: 'message lorem ipsum test'
+    });
+    
+    post.save(function(err) {
+      should.not.exists(err);
+      secondConn.db.collection('posts_another_conn_history', function(err, hposts) {
+        should.not.exists(err);
+        hposts.findOne(function(err, hpost) {
+          post.should.have.property('updatedFor', hpost.d.updatedFor);
+          post.title.should.be.equal(hpost.d.title);
+          post.should.have.property('message', hpost.d.message);
+          done();
+        });
+      });
+    });
+  });
+
   
 });
