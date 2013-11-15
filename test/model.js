@@ -23,7 +23,7 @@ describe('History Model', function() {
     });
   });
   
-  it('should require t(timestamp), o(operation) fields; but not d(document) field', function(done) {
+  it('should require t(timestamp), o(operation) fields and d(document) field', function(done) {
     var HistoryPost = Post.historyModel();
     var history = new HistoryPost();
     history.save(function(err) {
@@ -33,10 +33,8 @@ describe('History Model', function() {
         should.exists(err);
         history.o = 'i';
         history.save(function(err) {
-          should.not.exists(err);
-          
-          // Mixed types can't be required 
-          history.d = null;
+          should.exists(err);
+          history.d = {a: 1};
           history.save(function(err) {
             should.not.exists(err);
             done();
