@@ -1,6 +1,6 @@
 {
   "name": "mongoose-history",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Keeps a history of all changes of a document.",
   "main": "lib/mongoose-history.js",
   "scripts": {
@@ -17,7 +17,14 @@
     "cqrs",
     "backup"
   ],
-  "author": "Nassor Paulino da Silva",
+  "author": "Nassor Paulino da Silva <nassor@gmail.com>",
+  "contributors": [
+    { 
+      "name" : "Christopher Britz", 
+      "email" : "britztopher@gmail.com",
+      "url" : "https://github.com/britztopher"
+    }
+  ],
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/rossan/mongoose-history/issues"
