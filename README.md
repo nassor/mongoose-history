@@ -1,5 +1,7 @@
 # Mongoose History Plugin
 
+[![Build Status](https://travis-ci.org/rossan/mongoose-history.svg?branch=master)](https://travis-ci.org/rossan/mongoose-history)
+
 Keeps a history of all changes of a document. 
 
 ## Installation
