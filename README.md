@@ -60,7 +60,7 @@ The history documents have the format:
 To improve queries perfomance in history collection you can define indexes, for example:
 
 ```javascript
-var options = {indexes: {'t': -1, 'd._id': 1}}
+var options = {indexes: [{'t': -1, 'd._id': 1}]};
 Post.plugin(mongooseHistory, options)
 ```
 
