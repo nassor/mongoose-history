@@ -1,6 +1,6 @@
 {
   "name": "mongoose-history",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Keeps a history of all changes of a document.",
   "main": "lib/mongoose-history.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/rossan/mongoose-history"
+    "url": "github.com/nassor/mongoose-history"
   },
   "keywords": [
     "mongoose",
@@ -23,11 +23,15 @@
       "name" : "Christopher Britz", 
       "email" : "britztopher@gmail.com",
       "url" : "https://github.com/britztopher"
+    },
+    {
+      "name" : "Allan Nienhuis",
+      "url" : "https://github.com/allannienhuis"
     }
   ],
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/rossan/mongoose-history/issues"
+    "url": "https://github.com/nassor/mongoose-history/issues"
   },
   "dependencies": {
     "mongoose": "~3.8.0"
