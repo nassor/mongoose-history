@@ -27,7 +27,7 @@ var Post = new Schema({
   , updated_for: String
 })
 
-Post.plugin(mongooseHistory, options)
+Post.plugin(mongooseHistory)
 ```
 
 The plugin will create a new collection with format: originalCollectionName +  **_history**, in example: __posts_history__. You can also change the name of the collection by setting the configuration customCollectionName:
