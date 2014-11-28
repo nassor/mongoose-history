@@ -27,9 +27,6 @@ var Post = new Schema({
   , updated_for: String
 })
 
-// Default options
-var options = {indexes: null, customCollectionName: null}
-
 Post.plugin(mongooseHistory, options)
 ```
 
