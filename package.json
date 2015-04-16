@@ -1,6 +1,6 @@
 {
   "name": "mongoose-history",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Keeps a history of all changes of a document.",
   "main": "lib/mongoose-history.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "url": "https://github.com/nassor/mongoose-history/issues"
   },
   "dependencies": {
-    "mongoose": "~3.8.0"
+    "mongoose": "~4.0.0"
   },
   "devDependencies": {
     "mocha": "*",
