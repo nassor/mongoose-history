@@ -3,13 +3,13 @@
   "version": "0.4.0",
   "description": "Keeps a history of all changes of a document.",
   "main": "lib/mongoose-history.js",
+  "files": [
+    "lib/"
+  ],
   "scripts": {
     "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "github.com/nassor/mongoose-history"
-  },
+  "repository": "nassor/mongoose-history",
   "keywords": [
     "mongoose",
     "history",
@@ -19,8 +19,8 @@
   ],
   "author": "Nassor Paulino da Silva <nassor@gmail.com>",
   "contributors": [
-    { 
-      "name" : "Christopher Britz", 
+    {
+      "name" : "Christopher Britz",
       "email" : "britztopher@gmail.com",
       "url" : "https://github.com/britztopher"
     },
