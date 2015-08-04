@@ -3,6 +3,9 @@
   "version": "0.4.1",
   "description": "Keeps a history of all changes of a document.",
   "main": "lib/mongoose-history.js",
+  "files": [
+    "lib/"
+  ],
   "scripts": {
     "test": "mocha"
   },
