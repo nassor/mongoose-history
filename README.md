@@ -84,7 +84,7 @@ Clear all History collection;
 
 
 ## TODO
-
+* **Store additional metadata**
 * Rollback methods;
 * Recreate all the collection from the historic;
 
