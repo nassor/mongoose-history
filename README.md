@@ -29,6 +29,14 @@ var Post = new Schema({
 
 Post.plugin(mongooseHistory)
 ```
+This will generate a log from al your changes on this schema.
+
+You can also use the diffOnly option, that allows you to save just what changed from your previous document to your current. The default configuration is to save the whole documment in your history.
+
+```javascript
+var options = {diffOnly: true}
+Post.plugin(mongooseHistory, options)
+```
 
 The plugin will create a new collection with format: originalCollectionName +  **_history**, in example: __posts_history__. You can also change the name of the collection by setting the configuration customCollectionName:
 
