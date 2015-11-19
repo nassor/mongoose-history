@@ -30,6 +30,11 @@
     {
       "name" : "Allan Nienhuis",
       "url" : "https://github.com/allannienhuis"
+    },
+    {
+      "name" : "João Manoel Pampanini Filho",
+      "email" : "joao.bontorin@gmail.com",
+      "url" : "https://github.com/jmpf13"
     }
   ],
   "license": "BSD-2-Clause",
@@ -38,6 +43,7 @@
   },
   "dependencies": {
     "mongoose": "^4.0.0"
+
   },
   "devDependencies": {
     "mocha": "*",
