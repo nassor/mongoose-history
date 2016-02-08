@@ -26,6 +26,21 @@ describe('History plugin', function() {
       });
     });
   };
+
+  function updatePostWithHistory(post, callback) {
+    post.save(function(err) {
+      if(err) return callback(err);
+
+      post.title = 'Updated title';
+
+      Post.update({title: 'Title test'}, post, function(err){
+        if(err) return callback(err);
+        HistoryPost.findOne({'d.title': 'Updated title'}, function(err, hpost) {
+          callback(err, post, hpost);
+        });
+      });
+    });
+  };
     
   var post = null;
   
@@ -72,6 +87,17 @@ describe('History plugin', function() {
       post.message.should.be.equal(hpost.d.message);
       done();
     });
+  });
+
+  it('should keep update on Model in history', function(done) {
+    updatePostWithHistory(post, function (err, post, hpost) {
+      should.not.exists(err);
+      hpost.o.should.eql('u');
+      post.updatedFor.should.be.equal(hpost.d.updatedFor);
+      post.title.should.be.equal(hpost.d.title);
+      post.message.should.be.equal(hpost.d.message);
+      done();
+    })
   });
   
   it('should keep remove in history', function(done) {
