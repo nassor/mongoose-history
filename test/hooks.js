@@ -31,14 +31,7 @@ describe('History plugin', function() {
     post.save(function(err) {
       if(err) return callback(err);
 
-      console.log('=== * Post * ===');
-      console.log(post);
-      var post = post.toObject();
       post.title = 'Updated title';
-      delete post._id;
-
-      console.log('=== * POST POST * ===');
-      console.log(post);
 
       Post.update({title: 'Title test'}, post, function(err){
         if(err) return callback(err);
