@@ -1,8 +1,14 @@
 language: node_js
 services:
   - mongodb
+addons:
+  apt:
+    sources:
+    - mongodb-3.0-precise
+    packages:
+    - mongodb-org-server
 node_js:
-  - "0.10"
+  - "5.4.0"
 before_script:
   - npm install
 notifications:
