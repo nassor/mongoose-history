@@ -44,7 +44,7 @@ The default diff algorithm will convert the old value and the new value to a Str
 var options = {
   diffOnly: true, 
   customDiffAlgo: function(key, newValue, oldValue) {
-    if(key !== tags && String(newValue) != String(oldValue)){
+    if(key !== 'tags' && String(newValue) != String(oldValue)){
       return {
         diff: newValue
       };
