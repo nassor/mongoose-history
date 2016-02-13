@@ -38,6 +38,25 @@ var options = {diffOnly: true}
 Post.plugin(mongooseHistory, options)
 ```
 
+The default diff algorithm will convert the old value and the new value to a String, and will compare those strings. You can use the customDiffAlgo option to override the diff algorithm. You can do that, for example, in order to ignore the order of elements inside arrays. Here is an even simpler example, that will ignore the updates made to a specific document key (called 'tags'):
+
+```javascript
+var options = {
+  diffOnly: true, 
+  customDiffAlgo: function(key, newValue, oldValue) {
+    if(key !== 'tags' && String(newValue) != String(oldValue)){
+      return {
+        diff: newValue
+      };
+    }
+    // no diff should be recorded for the tags key
+    return null;
+  }
+};
+Post.plugin(mongooseHistory, options)
+```
+
+
 The plugin will create a new collection with format: originalCollectionName +  **_history**, in example: __posts_history__. You can also change the name of the collection by setting the configuration customCollectionName:
 
 ```javascript
