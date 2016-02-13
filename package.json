@@ -20,7 +20,11 @@
     "cqrs",
     "backup"
   ],
-  "author": "Nassor Paulino da Silva <nassor@gmail.com>",
+  "author": {
+      "name": "Nassor Paulino da Silva",
+      "email": "nassor@gmail.com",
+      "url": "https://github.com/nassor"
+  },
   "contributors": [
     {
       "name" : "Christopher Britz",
@@ -46,7 +50,7 @@
 
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
+    "mocha": "2.4.5",
+    "should": "8.2.2"
   }
 }

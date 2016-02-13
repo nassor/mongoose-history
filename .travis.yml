@@ -9,6 +9,7 @@ addons:
     - mongodb-org-server
 node_js:
   - "5.4.0"
+  - "4.3.0"
 before_script:
   - npm install
 notifications:
