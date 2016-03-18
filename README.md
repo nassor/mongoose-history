@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/nassor/mongoose-history.svg?branch=master)](https://travis-ci.org/nassor/mongoose-history)
 
-Keeps a history of all changes of a document. 
+Keeps a history of all changes of a document.
 
 ## Installation
 
@@ -30,32 +30,6 @@ var Post = new Schema({
 Post.plugin(mongooseHistory)
 ```
 This will generate a log from al your changes on this schema.
-
-You can also use the diffOnly option, that allows you to save just what changed from your previous document to your current. The default configuration is to save the whole documment in your history.
-
-```javascript
-var options = {diffOnly: true}
-Post.plugin(mongooseHistory, options)
-```
-
-The default diff algorithm will convert the old value and the new value to a String, and will compare those strings. You can use the customDiffAlgo option to override the diff algorithm. You can do that, for example, in order to ignore the order of elements inside arrays. Here is an even simpler example, that will ignore the updates made to a specific document key (called 'tags'):
-
-```javascript
-var options = {
-  diffOnly: true, 
-  customDiffAlgo: function(key, newValue, oldValue) {
-    if(key !== 'tags' && String(newValue) != String(oldValue)){
-      return {
-        diff: newValue
-      };
-    }
-    // no diff should be recorded for the tags key
-    return null;
-  }
-};
-Post.plugin(mongooseHistory, options)
-```
-
 
 The plugin will create a new collection with format: originalCollectionName +  **_history**, in example: __posts_history__. You can also change the name of the collection by setting the configuration customCollectionName:
 
@@ -110,14 +84,17 @@ Get History Model of Model;
 Clear all History collection;
 
 
+## In progress
+* Plugin rewriting.
+* update, findOneAndUpdate, findOneAndRemove support.
+
 ## TODO
+* **TTL documents**
 * **Store additional metadata**
-* Rollback methods;
-* Recreate all the collection from the historic;
 
 ## LICENSE
 
-Copyright (c) 2013, Nassor Paulino da Silva <nassor@gmail.com>
+Copyright (c) 2013-2016, Nassor Paulino da Silva <nassor@gmail.com>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
