@@ -107,7 +107,6 @@ Clear all History collection;
 
 ## TODO
 * **TTL documents**
-* **Store additional metadata**
 
 ## LICENSE
 
