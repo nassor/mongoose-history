@@ -73,6 +73,23 @@ var options = {historyConnection: secondConn}
 Post.plugin(mongooseHistory, options)
 ```
 
+### Store metadata
+If you need to store aditionnal data, use the ```metadata``` option
+It accepts a collection of objects. The parameters ```key``` and ```value``` are required. 
+You can specify mongoose options using the parameter ```schema``` (defaults to ```{type: mongoose.Schema.Types.Mixed}```)
+```value``` can be either a String (resolved from the updated object), or a function, sync or async
+
+```javascript
+var options = {
+  metadata: [
+    {key: 'title', value: 'title'},
+    {key: 'titleFunc', value: function(original, newObject){return newObject.title}},
+    {key: 'titleAsync', value: function(original, newObject, cb){cb(null, newObject.title)}}
+  ]
+};
+PostSchema.plugin(history,options);
+module.exports = mongoose.model('Post_meta', PostSchema);
+```
 
 ### Statics
 All modules with history plugin have following methods:
