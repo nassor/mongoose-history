@@ -11,4 +11,4 @@ var PostSchema = new Schema({
 var options = {diffOnly: true};
 PostSchema.plugin(history,options);
 
-module.exports = mongoose.model('Post_diff', PostSchema);
+module.exports = mongoose.model('Post_metadata', PostSchema);

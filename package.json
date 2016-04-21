@@ -21,28 +21,28 @@
     "backup"
   ],
   "author": {
-      "name": "Nassor Paulino da Silva",
-      "email": "nassor@gmail.com",
-      "url": "https://github.com/nassor"
+    "name": "Nassor Paulino da Silva",
+    "email": "nassor@gmail.com",
+    "url": "https://github.com/nassor"
   },
   "contributors": [
     {
-      "name" : "Christopher Britz",
-      "email" : "britztopher@gmail.com",
-      "url" : "https://github.com/britztopher"
+      "name": "Christopher Britz",
+      "email": "britztopher@gmail.com",
+      "url": "https://github.com/britztopher"
     },
     {
-      "name" : "Allan Nienhuis",
-      "url" : "https://github.com/allannienhuis"
+      "name": "Allan Nienhuis",
+      "url": "https://github.com/allannienhuis"
     },
     {
-      "name" : "João Manoel Pampanini Filho",
-      "email" : "joao.bontorin@gmail.com",
-      "url" : "https://github.com/jmpf13"
+      "name": "João Manoel Pampanini Filho",
+      "email": "joao.bontorin@gmail.com",
+      "url": "https://github.com/jmpf13"
     },
     {
-      "name" : "Sebastien Vaucouleur",
-      "url" : "http://vaucouleur.com"
+      "name": "Sebastien Vaucouleur",
+      "url": "http://vaucouleur.com"
     }
   ],
   "license": "BSD-2-Clause",
@@ -50,8 +50,8 @@
     "url": "https://github.com/nassor/mongoose-history/issues"
   },
   "dependencies": {
+    "async": "^2.0.0-rc.3",
     "mongoose": "^4.0.0"
-
   },
   "devDependencies": {
     "mocha": "2.4.5",
