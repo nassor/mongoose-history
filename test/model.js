@@ -4,6 +4,7 @@ var should          = require('should')
   , hm              = require('../lib/history-model')
   , Post            = require('./model/post-with-index')
   , PostAnotherConn = require('./model/post-another-conn')
+  , PostMetadata    = require('./model/post_metadata')
   , secondConn      = require('mongoose').createConnection('mongodb://localhost/mongoose-history-test-second');
 
 require('./config/mongoose');
@@ -72,6 +73,11 @@ describe('History Model', function() {
       });
     });
   });
+
+  it ('could have additionnal metadata fields', function(){
+    var HistoryPost = PostMetadata.historyModel();
+    HistoryPost.schema.paths.should.have.property('title')
+  })
 
   
 });
