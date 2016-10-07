@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mongoose-history-test');
-var secondConn = mongoose.createConnection('mongodb://localhost/mongoose-history-test-second');
+
+var connectionUri = process.env.CONNECTION_URI || 'mongodb://localhost/mongoose-history-test';
+mongoose.connect(connectionUri);
+
+var secondConnectionUri = process.env.SECONDARY_CONNECTION_URI || 'mongodb://localhost/mongoose-history-test-second';
+var secondConn = mongoose.createConnection(secondConnectionUri);
 // mongoose.set('debug', true);
 
 after(function(done) {
