@@ -1,6 +1,6 @@
 {
   "name": "mongoose-history",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Keeps a history of all changes of a document.",
   "main": "lib/mongoose-history.js",
   "files": [
@@ -43,6 +43,10 @@
     {
       "name": "Sebastien Vaucouleur",
       "url": "http://vaucouleur.com"
+    },
+    {
+      "name": "Victor Parmar",
+      "url": "https://smalldata.tech"
     }
   ],
   "license": "BSD-2-Clause",

@@ -104,8 +104,6 @@ Clear all History collection;
 
 ### Testing
 
-Run `mocha` under the root folder.
-
 The tests run against a local mongodb installation and use the following databases: `mongoose-history-test` and `mongoose-history-test-second`.
 
 Custom connection uris can be provided via environment variables for e.g. using a username and password:
