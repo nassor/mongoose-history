@@ -100,8 +100,18 @@ Get History Model of Model;
 #### Model.clearHistory()
 Clear all History collection;
 
+## Development
 
-## In progress
+### Testing
+
+The tests run against a local mongodb installation and use the following databases: `mongoose-history-test` and `mongoose-history-test-second`.
+
+Custom connection uris can be provided via environment variables for e.g. using a username and password:
+```
+CONNECTION_URI='mongodb://username:password@localhost/mongoose-history-test' SECONDARY_CONNECTION_URI='mongodb://username:password@localhost/mongoose-history-test-second' mocha
+```
+
+### In progress
 * Plugin rewriting.
 * update, findOneAndUpdate, findOneAndRemove support.
 

@@ -1,11 +1,13 @@
 "use strict";
 
+var secondConnectionUri = process.env.SECONDARY_CONNECTION_URI || 'mongodb://localhost/mongoose-history-test-second';
+
 var should          = require('should')
   , hm              = require('../lib/history-model')
   , Post            = require('./model/post-with-index')
   , PostAnotherConn = require('./model/post-another-conn')
   , PostMetadata    = require('./model/post_metadata')
-  , secondConn      = require('mongoose').createConnection('mongodb://localhost/mongoose-history-test-second');
+  , secondConn      = require('mongoose').createConnection(secondConnectionUri);
 
 require('./config/mongoose');
 
