@@ -3,13 +3,13 @@
 var should      = require('should')
   , Post        = require('./model/post')
   , HistoryPost = Post.historyModel();
-  
+
 require('./config/mongoose');
 
 describe('History plugin', function() {
-  
+
   var post = null;
-  
+
   function createAndUpdatePostWithHistory(post, callback) {
     post.save(function(err) {
       if(err) return callback(err);
@@ -41,19 +41,49 @@ describe('History plugin', function() {
       });
     });
   };
-    
+
+  function updateOnePostWithHistory(post, callback) {
+    post.save(function (err) {
+      if (err) return callback(err);
+
+      post.title = 'Updated title';
+
+      Post.updateOne({title: 'Title test'}, post, function (err) {
+        if (err) return callback(err);
+        HistoryPost.findOne({'d.title': 'Updated title'}, function (err, hpost) {
+          callback(err, post, hpost);
+        });
+      });
+    });
+  };
+
+  function findOneAndUpdatePostWithHistory(post, callback) {
+    post.save(function (err) {
+      if (err) return callback(err);
+
+      post.title = 'Updated title';
+
+      Post.findOneAndUpdate({title: 'Title test'}, post, function (err) {
+        if (err) return callback(err);
+        HistoryPost.findOne({'d.title': 'Updated title'}, function (err, hpost) {
+          callback(err, post, hpost);
+        });
+      });
+    });
+  };
+
   var post = null;
-  
+
   beforeEach(function(done) {
     post = new Post({
       updatedFor: 'mail@test.com',
       title:   'Title test',
       message: 'message lorem ipsum test'
     });
-    
+
     done();
   });
-  
+
   afterEach(function(done) {
     Post.remove({}, function(err) {
       should.not.exists(err);
@@ -63,7 +93,7 @@ describe('History plugin', function() {
       });
     });
   });
-  
+
   it('should keep insert in history', function(done) {
     post.save(function(err) {
       should.not.exists(err);
@@ -77,7 +107,7 @@ describe('History plugin', function() {
       });
     });
   });
-  
+
   it('should keep update in history', function(done) {
     createAndUpdatePostWithHistory(post, function(err, post, hpost) {
       should.not.exists(err);
@@ -99,7 +129,29 @@ describe('History plugin', function() {
       done();
     })
   });
-  
+
+  it('should keep update on Model in history using updateOne()', function (done) {
+    updateOnePostWithHistory(post, function (err, post, hpost) {
+      should.not.exists(err);
+      hpost.o.should.eql('u');
+      post.updatedFor.should.be.equal(hpost.d.updatedFor);
+      post.title.should.be.equal(hpost.d.title);
+      post.message.should.be.equal(hpost.d.message);
+      done();
+    })
+  });
+
+  it('should keep update on Model in history using findOneAndUpdate()', function (done) {
+    findOneAndUpdatePostWithHistory(post, function (err, post, hpost) {
+      should.not.exists(err);
+      hpost.o.should.eql('u');
+      post.updatedFor.should.be.equal(hpost.d.updatedFor);
+      post.title.should.be.equal(hpost.d.title);
+      post.message.should.be.equal(hpost.d.message);
+      done();
+    })
+  });
+
   it('should keep remove in history', function(done) {
     createAndUpdatePostWithHistory(post, function(err, post, hpost) {
       should.not.exists(err);
