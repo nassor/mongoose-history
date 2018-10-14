@@ -164,4 +164,33 @@ describe('History plugin', function() {
       });
     });
   });
+
+  it('should keep remove in history using findOneAndRemove()', function (done) {
+    createAndUpdatePostWithHistory(post, function (err, post, hpost) {
+      should.not.exists(err);
+      Post.findOneAndRemove({title: post.title}, function (err, doc) {
+        should.not.exists(err);
+        HistoryPost.find({o: 'r'}).select('d').exec(function (err, historyWithRemove) {
+          historyWithRemove.should.not.be.empty;
+          historyWithRemove.should.be.instanceOf(Array).and.have.lengthOf(1);
+          done();
+        });
+      });
+    });
+  });
+
+  it('should keep remove in history using findOneAndDelete()', function (done) {
+    createAndUpdatePostWithHistory(post, function (err, post, hpost) {
+      should.not.exists(err);
+      Post.findOneAndDelete({title: post.title}, function (err, doc) {
+        should.not.exists(err);
+        HistoryPost.find({o: 'r'}).select('d').exec(function (err, historyWithRemove) {
+          historyWithRemove.should.not.be.empty;
+          historyWithRemove.should.be.instanceOf(Array).and.have.lengthOf(1);
+          done();
+        });
+      });
+    });
+  });
+
 });
