@@ -47,6 +47,11 @@
     {
       "name": "Victor Parmar",
       "url": "https://smalldata.tech"
+    },
+    {
+      "name": "Landry Monga",
+      "email": "lvndry@protonmail.com",
+      "url": "https://github.com/lvndry"
     }
   ],
   "license": "BSD-2-Clause",

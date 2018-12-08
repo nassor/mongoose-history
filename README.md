@@ -75,7 +75,7 @@ Post.plugin(mongooseHistory, options)
 
 ### Store metadata
 If you need to store aditionnal data, use the ```metadata``` option
-It accepts a collection of objects. The parameters ```key``` and ```value``` are required. 
+It accepts a collection of objects. The parameters ```key``` and ```value``` are required.
 You can specify mongoose options using the parameter ```schema``` (defaults to ```{type: mongoose.Schema.Types.Mixed}```)
 ```value``` can be either a String (resolved from the updated object), or a function, sync or async
 
@@ -95,11 +95,40 @@ module.exports = mongoose.model('Post_meta', PostSchema);
 All modules with history plugin have following methods:
 
 #### Model.historyModel()
-Get History Model of Model;
+Get History Model of Model
 
 #### Model.clearHistory()
-Clear all History collection;
+Clear all History collection
 
+### Options
+- *customCollectionName*: Custom collection name of versioned document. Defaults to `<collectionName>_history`
+- *metadata*: Additional fields in history object
+- *indexes*: Define indexes for the schema.
+- *historyConnection*: Database in which you want versions to be stored
+- *diffOnly*: Stores only the differences. Defaults to `false`
+- *customDiffAlgo*: Custom algorithm to detect differences between orignal and updated document
+
+Example:
+```javascript
+const options = {
+  customCollectionName: 'customCollection',
+  metadata: [
+    { key: 'extra', value: 'value' },
+    { key: 'another', value: 'key' },
+    { key: 'valueIncreased', value: function(orignal, newObject) {
+      if (newObject.value) {
+        if (original.value > newObject.value) {
+          return true;
+        }
+      }
+      return false;
+    }}
+  ],
+  indexes: [ { d: -1, t: 1 }],
+  historyConnection: 'mongodb://localhost/another_conn',
+  diffOnly: true
+}
+```
 ## Development
 
 ### Testing
@@ -113,7 +142,6 @@ CONNECTION_URI='mongodb://username:password@localhost/mongoose-history-test' SEC
 
 ### In progress
 * Plugin rewriting.
-* update, findOneAndUpdate, findOneAndRemove support.
 
 ## TODO
 * **TTL documents**
